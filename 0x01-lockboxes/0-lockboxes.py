@@ -11,16 +11,17 @@ def canUnlockAll(boxes):
 
     n = len(boxes)
     opened = [False] * n
+    opened[0] = True
+    stack = [0]
 
-    for box in boxes:
-        for key in box:
-            if key < n:
+    while stack:
+        current_box = stack.pop()
+        for key in boxes[current_box]:
+            if key < n and not opened[key]:
                 opened[key] = True
+                stack.append(key)
 
-    if all(opened):
-        return True
-    else:
-        return False
+    return all(opened)
 
 
 boxes = [[7, 5], [1, 10, 7], [9, 6, 10], [7, 9], [2], [7, 3], [
