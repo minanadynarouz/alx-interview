@@ -7,27 +7,36 @@ achieve a given number of characters using only
 
 
 def isPrime(n):
-    """finding if number is prime or not
-    used as helper to min operation function"""
-
+    """Check if a number is prime."""
     if n <= 1:
         return False
-    for i in range(2, n):
-        if n % i == 0:
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
             return False
+        i += 6
     return True
 
 
 def minOperations(n):
-    """find min operation"""
+    """Calculate the sum of prime factors of n."""
+    if n <= 1:
+        return 0
+
     sum = 0
-    list_of_sum = []
+    i = 2
+    while i * i <= n:
+        while n % i == 0:
+            sum += i
+            n //= i
+        i += 1
 
-    for i in range(2, n+1):
-        while (n % i == 0) and isPrime(i):
-            list_of_sum.append(i)
-            n = n // i
+    # If n becomes a prime number greater than 2
+    if n > 1:
+        sum += n
 
-    for i in list_of_sum:
-        sum += i
     return sum
