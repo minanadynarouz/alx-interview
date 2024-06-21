@@ -16,7 +16,7 @@ total_filesize = 0
 
 def print_stats():
     """function to print the status"""
-    print("File Size:", total_filesize)
+    print("File size:", total_filesize)
     for code in sorted(newDict.keys()):
         if code != 'File Size':
             print("{}: {}".format(code, newDict[code]))
