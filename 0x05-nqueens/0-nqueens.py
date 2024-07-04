@@ -76,4 +76,3 @@ solutions = []
 
 solve_nqueens(board, 0, solutions)
 print_solutions(solutions)
-
