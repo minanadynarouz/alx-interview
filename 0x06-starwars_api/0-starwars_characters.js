@@ -18,7 +18,7 @@ request(url, (error, response, body) => {
           } else {
             resolve(JSON.parse(promBody).name);
           }
-        })
+        });
       })
     );
     Promise.all(peopleName)
@@ -26,4 +26,3 @@ request(url, (error, response, body) => {
       .catch(Err => console.log(Err));
   }
 });
-
