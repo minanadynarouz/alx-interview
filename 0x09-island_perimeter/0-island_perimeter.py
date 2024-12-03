@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+
+"""
+Function that calculate the island perimeter of a 2d Grid
+"""
+
 def island_perimeter(grid):
     w = 0
     h = 0
@@ -8,7 +14,6 @@ def island_perimeter(grid):
     top_height_index = 0
     last_height_index = 0
 
-    # Determine the width of the island
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if grid[i][j] == 1:
@@ -24,7 +29,6 @@ def island_perimeter(grid):
         if (last_width_index - first_width_index) + 1 > w:
             w = (last_width_index - first_width_index) + 1
 
-    # Determine the height of the island
     for i in range(len(grid) - 1, -1, -1):
         for j in range(len(grid[0])):
             if grid[i][j] == 1:
@@ -34,4 +38,3 @@ def island_perimeter(grid):
     h = (top_height_index - last_height_index) + 1
 
     return (w + w + h + h)
-
