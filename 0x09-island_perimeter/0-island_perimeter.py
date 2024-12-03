@@ -11,36 +11,21 @@ def island_perimeter(grid):
         The perimeter of the island defined in grid.
     """
     
-    w = 0
-    h = 0
+    perimeter = 0
+    rows = len(grid)
+    cols = len(grid[0]) if rows > 0 else 0
 
-    first_width_index = 0
-    last_width_index = 0
+    for i in range(rows):
+        for j in range(cols):
+            if grid[i][j] == 1:  # If it's land
+                # Check all four directions
+                if i == 0 or grid[i - 1][j] == 0:  # Up
+                    perimeter += 1
+                if i == rows - 1 or grid[i + 1][j] == 0:  # Down
+                    perimeter += 1
+                if j == 0 or grid[i][j - 1] == 0:  # Left
+                    perimeter += 1
+                if j == cols - 1 or grid[i][j + 1] == 0:  # Right
+                    perimeter += 1
 
-    top_height_index = 0
-    last_height_index = 0
-
-    for i in range(len(grid)):
-        for j in range(len(grid[0])):
-            if grid[i][j] == 1:
-                first_width_index = j
-                top_height_index = i
-                break
-        
-        for j in range(len(grid[0]) - 1, -1, -1):
-            if grid[i][j] == 1:
-                last_width_index = j
-                break
-        
-        if (last_width_index - first_width_index) + 1 > w:
-            w = (last_width_index - first_width_index) + 1
-
-    for i in range(len(grid) - 1, -1, -1):
-        for j in range(len(grid[0])):
-            if grid[i][j] == 1:
-                last_height_index = i
-                break
-
-    h = (top_height_index - last_height_index) + 1
-
-    return (w + w + h + h)
+    return perimeter
