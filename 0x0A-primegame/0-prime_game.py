@@ -20,7 +20,6 @@ def isWinner(x, nums):
     for i in range(1, max_n + 1):
         prime_count[i] = prime_count[i - 1] + (1 if is_prime[i] else 0)
 
-    # Step 3: Simulate the game
     maria_wins = 0
     ben_wins = 0
 
